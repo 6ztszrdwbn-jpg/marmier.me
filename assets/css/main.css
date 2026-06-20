@@ -455,7 +455,7 @@ input, select, textarea {
 
 	input[type="text"],
 	input[type="password"],
-	input[type="portable"],
+	input[type="tel"],
 	input[type="email"],
 	select {
 		height: 2.75rem;

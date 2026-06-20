@@ -1,7 +1,5 @@
 (function() {
 	var form = document.getElementById('lesson-request');
-	var copyButton = document.getElementById('copy-request');
-	var status = document.getElementById('copy-status');
 
 	if (!form)
 		return;
@@ -44,41 +42,8 @@
 			message.value = buildMessage();
 	}
 
-	function setStatus(text) {
-		if (status)
-			status.textContent = text;
-	}
-
 	form.addEventListener('input', updateMessage);
 	form.addEventListener('change', updateMessage);
-
-	if (copyButton) {
-		copyButton.addEventListener('click', function() {
-			if (form.reportValidity && !form.reportValidity())
-				return;
-
-			updateMessage();
-
-			var message = document.getElementById('message');
-			if (!message)
-				return;
-
-			message.select();
-			message.setSelectionRange(0, message.value.length);
-
-			if (navigator.clipboard && navigator.clipboard.writeText) {
-				navigator.clipboard.writeText(message.value).then(function() {
-					setStatus('Message copié. Vous pouvez maintenant le coller dans votre email.');
-				}).catch(function() {
-					document.execCommand('copy');
-					setStatus('Message sélectionné. Copiez-le puis envoyez-le par email.');
-				});
-			} else {
-				document.execCommand('copy');
-				setStatus('Message sélectionné. Copiez-le puis envoyez-le par email.');
-			}
-		});
-	}
 
 	form.addEventListener('submit', function(event) {
 		event.preventDefault();

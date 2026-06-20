@@ -1,9 +1,12 @@
+Voici le fichier `site.js` complet à coller:
+
+```js
 (function() {
 	var form = document.getElementById('lesson-request');
 	var copyButton = document.getElementById('copy-request');
 	var status = document.getElementById('copy-status');
 
-	if (!form || !copyButton)
+	if (!form)
 		return;
 
 	function value(id) {
@@ -20,7 +23,7 @@
 		return [
 			'Bonjour Nathan,',
 			'',
-			"Je souhaite prendre des cours de piano et j’aimerais échanger avec vous pour organiser un premier cours.",
+			'Je souhaite prendre des cours de piano et j’aimerais échanger avec vous pour organiser un premier cours.',
 			'',
 			'Prénom : ' + name,
 			'Profil : ' + profile,
@@ -38,43 +41,51 @@
 			message.value = buildMessage();
 	}
 
+	function setStatus(text) {
+		if (status)
+			status.textContent = text;
+	}
+
 	form.addEventListener('input', updateMessage);
 	form.addEventListener('change', updateMessage);
 
-	copyButton.addEventListener('click', function() {
+	if (copyButton) {
+		copyButton.addEventListener('click', function() {
+			updateMessage();
+
+			var message = document.getElementById('message');
+			if (!message)
+				return;
+
+			message.select();
+			message.setSelectionRange(0, message.value.length);
+
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(message.value).then(function() {
+					setStatus('Message copié. Vous pouvez maintenant le coller dans votre demande Superprof.');
+				}).catch(function() {
+					document.execCommand('copy');
+					setStatus('Message sélectionné. Copiez-le puis ouvrez Superprof.');
+				});
+			} else {
+				document.execCommand('copy');
+				setStatus('Message sélectionné. Copiez-le puis ouvrez Superprof.');
+			}
+		});
+	}
+
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
 		updateMessage();
 
 		var message = document.getElementById('message');
 		if (!message)
 			return;
 
-		message.select();
-		message.setSelectionRange(0, message.value.length);
+		var subject = encodeURIComponent('Demande de cours de piano');
+		var body = encodeURIComponent(message.value);
 
-		var copied = false;
-
-		if (navigator.clipboard && navigator.clipboard.writeText) {
-			navigator.clipboard.writeText(message.value).then(function() {
-				status.textContent = 'Message copié. Vous pouvez maintenant le coller dans votre demande Superprof.';
-			}).catch(function() {
-				document.execCommand('copy');
-				status.textContent = 'Message sélectionné. Copiez-le puis ouvrez Superprof.';
-			});
-			copied = true;
-		}
-
-		if (!copied) {
-			document.execCommand('copy');
-			status.textContent = 'Message sélectionné. Copiez-le puis ouvrez Superprof.';
-		}
-	form.addEventListener('submit', function(event) {
-  	event.preventDefault();
-  	updateMessage();
-
-  var subject = encodeURIComponent('Demande de cours de piano');
-  var body = encodeURIComponent(document.getElementById('message').value);
-
-  window.location.href = 'mailto:nathan@marmier.me?subject=' + subject + '&body=' + body;
-});
+		window.location.href = 'mailto:nathan@marmier.me?subject=' + subject + '&body=' + body;
 	});
 })();
+```

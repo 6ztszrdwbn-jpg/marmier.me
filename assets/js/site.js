@@ -67,5 +67,14 @@
 			document.execCommand('copy');
 			status.textContent = 'Message sélectionné. Copiez-le puis ouvrez Superprof.';
 		}
+	form.addEventListener('submit', function(event) {
+  	event.preventDefault();
+  	updateMessage();
+
+  var subject = encodeURIComponent('Demande de cours de piano');
+  var body = encodeURIComponent(document.getElementById('message').value);
+
+  window.location.href = 'mailto:nathan@marmier.me?subject=' + subject + '&body=' + body;
+});
 	});
 })();

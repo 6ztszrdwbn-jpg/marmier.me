@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/custom.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<link rel="icon" type="image/png" href="favicon.png">
 	</head>
 	<body class="is-preload">
 
@@ -28,8 +27,8 @@
 						<div class="content">
 							<div class="inner">
 								<p class="eyebrow">Cours particuliers de piano</p>
-								<h1>Nathan MARMIER</h1>
-								<p>Un accompagnement adapté à chaque élève, à son rythme,<br>à ses objectifs et à ses goûts musicaux.</p>
+								<h1>Nathan</h1>
+								<p>Un accompagnement adapté à chaque élève, à son rythme, à ses objectifs et à ses goûts musicaux.</p>
 								<ul class="actions special hero-actions">
 									<li><a href="#contact" class="button primary">Demander un cours</a></li>
 									<li><a href="https://www.superprof.fr/cours-piano-adaptes-eleves-debutants-amateurs-intermediaires-age.html" class="button" target="_blank" rel="noopener">Voir Superprof</a></li>
@@ -114,47 +113,59 @@
 								</section>
 							</article>
 
-<!-- Contact -->
-<article id="contact">
-	<h2 class="major">Demander un cours</h2>
-	<p>Pour réserver ou poser une question, remplissez le formulaire ci-dessous. Il préparera automatiquement un email à envoyer à Nathan.</p>
+						<!-- Contact -->
+							<article id="contact">
+								<h2 class="major">Demander un cours</h2>
+								<p>Pour réserver ou poser une question, remplissez le formulaire ci-dessous. Il préparera automatiquement un email à envoyer à Nathan.</p>
 
-	<form id="lesson-request">
-		<div class="fields">
-			<div class="field half">
-				<label for="name">Prénom</label>
-				<input type="text" name="name" id="name" placeholder="Votre prénom" />
-			</div>
-			<div class="field half">
-				<label for="profile">Profil</label>
-				<select name="profile" id="profile">
-					<option value="débutant">Débutant</option>
-					<option value="reprise">Reprise après une pause</option>
-					<option value="intermédiaire">Niveau intermédiaire</option>
-					<option value="enfant">Enfant / adolescent</option>
-					<option value="adulte">Adulte</option>
-				</select>
-			</div>
-			<div class="field">
-				<label for="goal">Objectif principal</label>
-				<input type="text" name="goal" id="goal" placeholder="Ex: découvrir le piano, progresser en classique, accompagner des chansons..." />
-			</div>
-			<div class="field">
-				<label for="availability">Disponibilités</label>
-				<input type="text" name="availability" id="availability" placeholder="Ex: mercredi après-midi, samedi matin, soirs en semaine..." />
-			</div>
-			<div class="field">
-				<label for="message">Message</label>
-				<textarea name="message" id="message" rows="6">Bonjour Nathan, je souhaite prendre des cours de piano et j’aimerais échanger avec vous pour organiser un premier cours.</textarea>
-			</div>
-		</div>
-		<ul class="actions">
-			<li><button type="submit" class="primary">Envoyer par email</button></li>
-			<li><button type="button" id="copy-request">Copier le message</button></li>
-		</ul>
-		<p id="copy-status" class="form-status" aria-live="polite"></p>
-	</form>
-</article>
+								<form id="lesson-request">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Prénom</label>
+											<input type="text" name="name" id="name" placeholder="Votre prénom" autocomplete="given-name" required />
+										</div>
+										<div class="field half">
+											<label for="last-name">Nom</label>
+											<input type="text" name="last-name" id="last-name" placeholder="Votre nom" autocomplete="family-name" required />
+										</div>
+										<div class="field half">
+											<label for="phone">Portable</label>
+											<input type="tel" name="phone" id="phone" placeholder="Votre numéro de portable" autocomplete="tel" inputmode="tel" required />
+										</div>
+										<div class="field half">
+											<label for="city">Ville</label>
+											<input type="text" name="city" id="city" placeholder="Votre ville" autocomplete="address-level2" required />
+										</div>
+										<div class="field">
+											<label for="profile">Profil</label>
+											<select name="profile" id="profile">
+												<option value="débutant">Débutant</option>
+												<option value="reprise">Reprise après une pause</option>
+												<option value="intermédiaire">Niveau intermédiaire</option>
+												<option value="enfant">Enfant / adolescent</option>
+												<option value="adulte">Adulte</option>
+											</select>
+										</div>
+										<div class="field">
+											<label for="goal">Objectif principal</label>
+											<input type="text" name="goal" id="goal" placeholder="Ex: découvrir le piano, progresser en classique, accompagner des chansons..." />
+										</div>
+										<div class="field">
+											<label for="availability">Disponibilités</label>
+											<input type="text" name="availability" id="availability" placeholder="Ex: mercredi après-midi, samedi matin, soirs en semaine..." />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6">Bonjour Nathan, je souhaite prendre des cours de piano et j’aimerais échanger avec vous pour organiser un premier cours.</textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><button type="submit" class="primary">Envoyer par email</button></li>
+										<li><button type="button" id="copy-request">Copier le message</button></li>
+									</ul>
+									<p id="copy-status" class="form-status" aria-live="polite"></p>
+								</form>
+							</article>
 
 					</div>
 

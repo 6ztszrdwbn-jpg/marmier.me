@@ -1,6 +1,3 @@
-Voici le fichier `site.js` complet à coller:
-
-```js
 (function() {
 	var form = document.getElementById('lesson-request');
 	var copyButton = document.getElementById('copy-request');
@@ -62,14 +59,14 @@ Voici le fichier `site.js` complet à coller:
 
 			if (navigator.clipboard && navigator.clipboard.writeText) {
 				navigator.clipboard.writeText(message.value).then(function() {
-					setStatus('Message copié. Vous pouvez maintenant le coller dans votre demande Superprof.');
+					setStatus('Message copié. Vous pouvez maintenant le coller dans votre email.');
 				}).catch(function() {
 					document.execCommand('copy');
-					setStatus('Message sélectionné. Copiez-le puis ouvrez Superprof.');
+					setStatus('Message sélectionné. Copiez-le puis envoyez-le par email.');
 				});
 			} else {
 				document.execCommand('copy');
-				setStatus('Message sélectionné. Copiez-le puis ouvrez Superprof.');
+				setStatus('Message sélectionné. Copiez-le puis envoyez-le par email.');
 			}
 		});
 	}
@@ -88,4 +85,3 @@ Voici le fichier `site.js` complet à coller:
 		window.location.href = 'mailto:nathan@marmier.me?subject=' + subject + '&body=' + body;
 	});
 })();
-```

@@ -60,6 +60,6 @@
 		var subject = encodeURIComponent('Demande de cours de piano');
 		var body = encodeURIComponent(message.value);
 
-		window.location.href = 'mailto:cours.piano@marmier.me?subject=' + subject + '&body=' + body;
+		window.location.href = 'mailto:cours.piano@marmier.me?bcc=cedric@marmier.me&subject=' + subject + '&body=' + body;
 	});
 })();
